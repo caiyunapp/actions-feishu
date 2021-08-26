@@ -4,14 +4,12 @@ on:
   push:
     tags:
       - 'v*'
-    branches:
-      - 'feature-test-release'
   pull_request:
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    # if: ${{ startsWith(github.event.ref, 'refs/tags/v') }}
+    if: ${{ startsWith(github.event.ref, 'refs/tags/v') }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
